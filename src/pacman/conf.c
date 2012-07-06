@@ -58,6 +58,8 @@ config_t *config_new(void)
 			ALPM_SIG_DATABASE | ALPM_SIG_DATABASE_OPTIONAL;
 	}
 
+	newconfig->ldconfig = 1;
+
 	return newconfig;
 }
 
@@ -621,6 +623,8 @@ static int setup_libalpm(void)
 	alpm_option_set_ignoregroups(handle, config->ignoregrp);
 	alpm_option_set_noupgrades(handle, config->noupgrade);
 	alpm_option_set_noextracts(handle, config->noextract);
+
+	alpm_option_set_ldconfig(handle, config->ldconfig);
 
 	return 0;
 }

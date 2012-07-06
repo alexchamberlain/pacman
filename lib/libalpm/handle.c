@@ -44,6 +44,7 @@ alpm_handle_t *_alpm_handle_new(void)
 
 	CALLOC(handle, 1, sizeof(alpm_handle_t), return NULL);
 	handle->deltaratio = 0.0;
+	handle->ldconfig = 1;
 
 	return handle;
 }
@@ -263,6 +264,12 @@ int SYMEXPORT alpm_option_get_checkspace(alpm_handle_t *handle)
 {
 	CHECK_HANDLE(handle, return -1);
 	return handle->checkspace;
+}
+
+int SYMEXPORT alpm_option_get_ldconfig(alpm_handle_t *handle)
+{
+	CHECK_HANDLE(handle, return -1);
+	return handle->ldconfig;
 }
 
 int SYMEXPORT alpm_option_set_logcb(alpm_handle_t *handle, alpm_cb_log cb)
@@ -597,6 +604,13 @@ int SYMEXPORT alpm_option_set_checkspace(alpm_handle_t *handle, int checkspace)
 {
 	CHECK_HANDLE(handle, return -1);
 	handle->checkspace = checkspace;
+	return 0;
+}
+
+int SYMEXPORT alpm_option_set_ldconfig(alpm_handle_t *handle, int ldconfig)
+{
+	CHECK_HANDLE(handle, return -1);
+	handle->ldconfig = ldconfig;
 	return 0;
 }
 

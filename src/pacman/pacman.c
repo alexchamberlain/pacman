@@ -201,6 +201,7 @@ static void usage(int op, const char * const myname)
 		addlist(_("      --gpgdir <path>  set an alternate home directory for GnuPG\n"));
 		addlist(_("      --logfile <path> set an alternate log file\n"));
 		addlist(_("      --noconfirm      do not ask for any confirmation\n"));
+		addlist(_("      --no-ldconfig    do not run ldconfig\n"));
 	}
 	list = alpm_list_msort(list, alpm_list_count(list), options_cmp);
 	for(i = list; i; i = alpm_list_next(i)) {
@@ -436,6 +437,9 @@ static int parsearg_global(int opt)
 			break;
 		case 'r': check_optarg(); config->rootdir = strdup(optarg); break;
 		case 'v': (config->verbose)++; break;
+		case OP_NO_LDCONFIG:
+			config->ldconfig = 0;
+			break;
 		default: return 1;
 	}
 	return 0;
@@ -628,6 +632,7 @@ static int parseargs(int argc, char *argv[])
 		{"print-format", required_argument, 0, OP_PRINTFORMAT},
 		{"gpgdir",     required_argument, 0, OP_GPGDIR},
 		{"dbonly",     no_argument,       0, OP_DBONLY},
+		{"no-ldconfig", no_argument,      0, OP_NO_LDCONFIG},
 		{0, 0, 0, 0}
 	};
 

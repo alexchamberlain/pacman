@@ -91,6 +91,7 @@ struct __alpm_handle_t {
 	double deltaratio;       /* Download deltas if possible; a ratio value */
 	int usesyslog;           /* Use syslog instead of logfile? */ /* TODO move to frontend */
 	int checkspace;          /* Check disk space before installing */
+	int ldconfig;            /* Should we run ldconfig? Default: 1 */
 	alpm_siglevel_t siglevel;   /* Default signature verification level */
 
 	/* error code */

@@ -547,6 +547,9 @@ int alpm_option_set_deltaratio(alpm_handle_t *handle, double ratio);
 int alpm_option_get_checkspace(alpm_handle_t *handle);
 int alpm_option_set_checkspace(alpm_handle_t *handle, int checkspace);
 
+int alpm_option_get_ldconfig(alpm_handle_t *handle);
+int alpm_option_set_ldconfig(alpm_handle_t *handle, int ldconfig);
+
 alpm_siglevel_t alpm_option_get_default_siglevel(alpm_handle_t *handle);
 int alpm_option_set_default_siglevel(alpm_handle_t *handle, alpm_siglevel_t level);
 

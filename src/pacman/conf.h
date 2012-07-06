@@ -95,6 +95,8 @@ typedef struct __config_t {
 
 	alpm_list_t *explicit_adds;
 	alpm_list_t *explicit_removes;
+
+	int ldconfig; /* Should ldconfig be called? Default: 1 */
 } config_t;
 
 /* Operations */
@@ -127,7 +129,8 @@ enum {
 	OP_PRINTFORMAT,
 	OP_GPGDIR,
 	OP_DBONLY,
-	OP_FORCE
+	OP_FORCE,
+	OP_NO_LDCONFIG
 };
 
 /* clean method */
